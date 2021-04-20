@@ -19,8 +19,11 @@ def correcionExamen(cantEjer,porcentaje,ejerciciosBien):
     while ejerciciosBien != "salir":
         aprobarPorc= (ejerciciosBien*100)/cantEjer
         if aprobarPorc < notaMinima(cantEjer,porcentaje):
-            return 1
+            return 1 and aprobarPorc
         else:
-            return 0
+            return 0 and aprobarPorc
 
-print("")
+if correcionExamen(cantEjer,porcentaje,ejerciciosBien) == 1:
+    print("La nota del alumno es:",aprobarPorc, "no ha aprobado")
+else:
+    print("La nota del alumno es: ", aprobarPorc, "ha aprobado")
