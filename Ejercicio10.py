@@ -1,8 +1,9 @@
 import random 
 from random import randrange
-num=random.randrange(1 , 5)
-print(num)
+
+num = random.randrange(1 , 5)
 n = 0
+
 while n != num:
     n = int(input("Ingrese un numero: "))
     if n == num:
