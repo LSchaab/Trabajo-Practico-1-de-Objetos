@@ -1,99 +1,122 @@
-meses= ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
-dias= [31,28,31,30,31,30,31,31,30,31,30,31]
+import random 
 
-
-def mesValido(unMes):
-    esNumero=preguntar_si_es_un_numero_o_no(unMes)
-    if esNumero==True:
-        if int(unMes) < 13 and int(unMes) > 0:
-            return True
-    else:
-        for i in range(len(meses)):
-            if meses[i] == unMes:
+def validarNum(numero, funcion):
+    """"Funcion = 1, valida los numeros que ingresa el usuario
+    Funcion = 2, valida los numeros que se generan de manera random
+    """
+    hacer = funcion
+    numerosGenerados = []
+    numerosDados = []
+    if hacer == 1:
+        if preguntarSiEsNumero(numero) == True:
+            for i in range(4):
+                numerosDados.append(numero[i])
+            for i in numerosDados:
+                numD1 = numerosDados.count(numero[0])
+                numD2 = numerosDados.count(numero[1])
+                numD3 = numerosDados.count(numero[2])
+                numD4 = numerosDados.count(numero[3])
+            if numD1 != 1 or numD2 != 1 or numD3 != 1 or numD4 != 1:
+                return False
+            else:
                 return True
+        else:
+            return False
+    
+    else: 
+        if preguntarSiEsNumero(numero) == True:
+            for i in range(4):
+                numerosGenerados.append(numero[i])
+            for i in numerosGenerados:
+                numG1 = numerosGenerados.count(numero[0])
+                numG2 = numerosGenerados.count(numero[1])
+                numG3 = numerosGenerados.count(numero[2])
+                numG4 = numerosGenerados.count(numero[3])
+            if numG1 != 1 or numG2 != 1 or numG3 != 1 or numG4 != 1:
+                return False
+            else:
+                return True
+        else:
+            return False
+        
+    
+
+def pedirNum():
+    """Pide un numero de 4 cifras distintas"""
+    numeroPedido = ""
+    while validarNum(numeroPedido, 1) == False:
+        numeroPedido = str(input("Ingrese un numero de 4 cifras distintas: "))
+    return numeroPedido
+    
+    
+    
+def generarNum():
+    """Genera un numero aleatorio de 4 cifras"""
+    numeroGenerado = ""
+    while validarNum(numeroGenerado, 2) == False:
+            numeroGenerado = str(random.randint(1000 , 9999))
+    return numeroGenerado
 
 
-def preguntar_si_es_un_numero_o_no(unMes):
-    if unMes.isdigit():
+
+def juego():
+    """Guarda los numeros en dos listas y llama a las
+    funciones para verificar si son validos y compararlos"""
+    numerosGenerados = []
+    numeroGenerado = generarNum()
+    aciertos = 0
+    for i in range(4):
+        numerosGenerados.append(numeroGenerado[i])
+    print(numerosGenerados)
+    while aciertos != 4:
+        numerosDados = []
+        numeroPedido = pedirNum()
+        for i in range(4):
+            numerosDados.append(numeroPedido[i])
+        print(numerosDados)
+        aciertos = cantAciertos(numerosGenerados,numerosDados)
+        coincidencias = cantCoincidencias(numerosDados,numerosGenerados)
+        if aciertos == 4:
+            return f"Ganaste este bello juego tan sereno que me llevo toda una mañana de mi vida."
+        else:
+            print(f"Hay {aciertos} aciertos y {coincidencias} coincidencias") 
+            continue
+
+    
+def cantAciertos(numerosGenerados,numerosDados):
+    """Cuenta los aciertos"""
+    aciertos = 0
+    for i in range(len(numerosGenerados)):
+        if numerosGenerados[i] == numerosDados[i]:
+            aciertos += 1
+    return aciertos
+    
+
+def preguntarSiEsNumero(numero):
+    """Pregunta si es un numero"""
+    if numero.isdigit():
         return True
     else:
         return False
+    
+def cantCoincidencias(numerosGenerados,numerosDados):
+    """Cuenta las coincidencias"""
+    coincidencias = 0
+    todosNumeros = numerosGenerados + numerosDados
+    for i in range(0,3):
+        x = todosNumeros.count(todosNumeros[i])
+        if x > 1:
+            coincidencias += 1
+    return coincidencias - cantAciertos(numerosGenerados,numerosDados)
+        
+    
 
-
-def bisiestoSiNo(año):
-    if año % 4 != 0:
-        return False
-    else:
-        if año % 100 != 0:
-            return True
-        elif año % 400 == 0:
-            return True
-        else:
-            return False
-
-
-def diasmes(mes,año):
-    esNumero = preguntar_si_es_un_numero_o_no(mes)
-    esValido = mesValido(mes)
-    esBisiesto = bisiestoSiNo(año)
-    if esValido == True:
-        if esNumero == True:
-            mes = int(mes)
-            if mes == 2 and esBisiesto == True:
-                return (dias[mes-1])+1
-            else: 
-                return dias[mes-1]
-        else:
-            for i in range(len(meses)):
-                if meses[i] == mes:
-                    if mes == "febrero" and esBisiesto == True:
-                        return (dias[i]) + 1
-                    else:
-                        return dias[i]
-    else:
-        return 1
-
-
-def fechaValida(dia,mes,año):
-    if int(año) > 1:
-            if mesValido(mes) == True:
-                if dia > diasmes(mes,año) or dia < 1:
-                    return False
-                else:
-                    return True
-            else:
-                return False
-
-
-def diasFinMes(dia,mes,año):
-    diasFinMes = diasmes(mes,año) - dia
-    return diasFinMes
-
-
-def diasFinAño(dia,mes,año): 
-    finAño=diasFinMes(dia,mes,año)
-    if fechaValida(dia,mes,año):
-        if preguntar_si_es_un_numero_o_no(mes) == True:
-            mes = int(mes)
-            for i in range(mes,12):
-                finAño = finAño + dias[i]
-            return finAño
-        else: 
-            mes = meses.index(mes) + 1
-            for i in range(mes,12):
-                finAño = finAño + dias[i]
-            return finAño
-
-def diasTranscurridos(dia,mes,año):
-    diasTrans = dias
-    if fechaValida == True:
-        for i in range(11,mes):
-            print(i)
+print(juego())
 
 
 
-año = int(input("Ingrese el año: "))
-mes = input("Ingrese el mes: ")
-dia = int(input("Ingrese el dia: "))
 
-print(diasTranscurridos(dia,mes,año))
+
+
+
+

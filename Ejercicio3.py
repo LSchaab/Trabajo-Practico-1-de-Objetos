@@ -1,8 +1,9 @@
 def factorial(numero):
     """Calcula el factorial de un numero"""
     fact = numero
+    
     for i in range(1,numero):
-        fact = fact*i
+        fact = fact * i
     return fact
 
 n = int(input("Ingrese el numero del cual quiere su factorial: "))

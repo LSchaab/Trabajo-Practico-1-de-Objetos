@@ -3,6 +3,7 @@ mayus = input("Ingrese una palabra Capitalizada: ")
 pal = input("ingrese la misma palabra en minusculas: ")
 
 def compararPalabras(palMayus, pal):
+    """Compara las palabras y devuelve True si son la misma"""
     if palMayus == pal.upper():
         return True
     else:

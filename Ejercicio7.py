@@ -21,6 +21,7 @@ def preguntar_si_es_un_numero_o_no(unMes):
 
 
 def bisiestoSiNo(año):
+    """Comprueba si el año es bisiesto o no"""
     if año % 4 != 0:
         return False
     else:
@@ -32,10 +33,12 @@ def bisiestoSiNo(año):
             return False
 
 
-def diasmes(mes,año):
+def diasMes(mes,año):
+    """Devuelve la cantidad de día que tiene el mes ingresado"""
     esNumero = preguntar_si_es_un_numero_o_no(mes)
     esValido = mesValido(mes)
     esBisiesto = bisiestoSiNo(año)
+    
     if esValido == True:
         if esNumero == True:
             mes = int(mes)
@@ -55,9 +58,10 @@ def diasmes(mes,año):
 
 
 def fechaValida(dia,mes,año):
+    """Valida la fecha"""
     if int(año) > 1:
             if mesValido(mes) == True:
-                if dia > diasmes(mes,año) or dia < 1:
+                if dia > diasMes(mes,año) or dia < 1:
                     return False
                 else:
                     return True
@@ -66,12 +70,14 @@ def fechaValida(dia,mes,año):
 
 
 def diasFinMes(dia,mes,año):
-    diasFinMes = diasmes(mes,año) - dia
+    """Calcula los días hasta fin de mes"""
+    diasFinMes = diasMes(mes,año) - dia
     return diasFinMes
 
 
 def diasFinAño(dia,mes,año): 
-    finAño=diasFinMes(dia,mes,año)
+    """Calcula los días hasta fin de año"""
+    finAño = diasFinMes(dia,mes,año)
     if fechaValida(dia,mes,año):
         if preguntar_si_es_un_numero_o_no(mes) == True:
             mes = int(mes)
@@ -85,15 +91,26 @@ def diasFinAño(dia,mes,año):
             return finAño
 
 def diasTranscurridos(dia,mes,año):
-    diasTrans = dias
-    if fechaValida == True:
-        for i in range
+    """Devuelve los días transcurridos de un año dada una fecha"""
+    if fechaValida(dia,mes,año) == True:
+        if bisiestoSiNo(año) == True:
+            dias[1] = 29
+        else:
+            dias[1] = 28
+
+        diasTrans = dia
+
+        if preguntar_si_es_un_numero_o_no(mes) == True:
+            mes = int(mes)
+        else: 
+            mes = meses.index(mes) + 1
+        for i in range(0,mes-1):
+            diasTrans = diasTrans + dias[i]
+        return diasTrans
         
 
 
-
-
-opcion=int(input("""Ingrese lo que desea realizar:
+opcion = int(input("""Ingrese lo que desea realizar:
 1. Saber si un año es bisiesto o no.
 2. Saber la cantidad de dìas de un mes.
 3. Validar una fecha.
@@ -105,6 +122,7 @@ opcion=int(input("""Ingrese lo que desea realizar:
 
 if opcion == 1:
     año = int(input("Ingrese un año: "))
+    
     if bisiestoSiNo(año)==False:
         print("El año no es bisiesto.")
     else:
@@ -114,8 +132,9 @@ if opcion == 1:
 if opcion == 2:
     año = int(input("Ingrese el año: "))
     mes = input("Ingrese su mes: ")
-    if diasmes(mes,año) != 1:
-        print("La cantidad de días del mes ingresado son: ", diasmes(mes,año))
+    
+    if diasMes(mes,año) != 1:
+        print("La cantidad de días del mes ingresado son: ", diasMes(mes,año))
     else:
         print("Datos ingresados no validos.")
 
@@ -124,6 +143,7 @@ if opcion==3:
     año = int(input("Ingrese el año: "))
     mes = input("Ingrese el mes: ")
     dia = int(input("Ingrese el dia: "))
+    
     if fechaValida(dia,mes,año) == True:
         print("La fecha es valida.")
     else:
@@ -132,6 +152,7 @@ if opcion==3:
 if opcion == 4:
     mes = input("Ingrese el mes: ")
     dia = int(input("Ingrese el día: "))
+    año = int(input("Ingrese el año: "))
     print("Faltan", diasFinMes(dia,mes,año), "días para fin de mes.")
 
 
@@ -139,7 +160,15 @@ if opcion == 5:
     año = int(input("Ingrese el año: "))
     mes = input("Ingrese el mes: ")
     dia = int(input("Ingrese el dia: "))
+    
     if diasFinAño(dia,mes,año) == 0:
         print("Feliz año nuevo :D")
     else: 
         print("La cantidad de días que faltan para fin de año es: ", diasFinAño(dia,mes,año))
+
+if opcion == 6:
+    año = int(input("Ingrese el año: "))
+    mes = input("Ingrese el mes: ")
+    dia = int(input("Ingrese el dia: "))
+    
+    print("Los días ya transcurridos del año son: ", diasTranscurridos(dia,mes,año))

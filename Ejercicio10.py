@@ -12,4 +12,4 @@ while n != num:
     elif n > num:
         print("El numero es menor.")
     elif n < num:
-        print("El numero es mayor.")
+        print("El numero es mayor.") 

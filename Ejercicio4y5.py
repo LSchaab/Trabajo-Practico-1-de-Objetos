@@ -1,11 +1,11 @@
 def farenheitacelscius(farenheit):
     """Calcula grados Celscius"""
-    celscius = (farenheit-32)*5/9
+    celscius = (farenheit - 32) * 5/9
     return celscius
 
 def celsciusafarenheit(celscius):
     """Calcula grados farenheit"""
-    farenheit = (9/5*celscius) + 32
+    farenheit = (9/5 * celscius) + 32
     return farenheit 
 
 def tablaFarenaCel():
@@ -21,11 +21,11 @@ opcion = int(input("""Ingrese un numero según lo que desee:
 3.Mostrar una tabla de conversión de Farenheit a Celscius de 10° en 10°: """))
 
 if opcion == 1:
-    far=float(input("Ingrese los grados Farenheit que desea convertir: "))
+    far = float(input("Ingrese los grados Farenheit que desea convertir: "))
     print(far,"° F equivalen a",farenheitacelscius(far),"° C")
 
 if opcion == 2:
-    cel=float(input("Ingrese los grados Celsius que desea convertir: "))
+    cel = float(input("Ingrese los grados Celsius que desea convertir: "))
     print(cel,"° C equivalen a",celsciusafarenheit(cel),"° F")
 
 if opcion == 3:

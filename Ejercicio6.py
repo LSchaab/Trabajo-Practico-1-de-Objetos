@@ -20,10 +20,13 @@ multis.append(mult5)
 multis.append(mult6)
 
 def compararMultis(multis):
+  """Compara las multiplicaciones"""
   mayor = multis[0]
+  
   for i in range(len(multis)):
     if multis[i] > mayor:
       mayor = multis[i]
+      
   return mayor
 
-print(compararMultis(multis))
+print("El mayor producto que se puede obtener de los numeros ingresados es: ", compararMultis(multis))

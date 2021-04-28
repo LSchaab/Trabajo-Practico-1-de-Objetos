@@ -47,7 +47,7 @@ operacion = int(input("""Ingrese la operacion que desea:
 7.Calcular hipotenusa dados los catetos
  """))
 
-if operacion==1:
+if operacion == 1:
     base = int(input("Ingrese la base de su rectangulo: "))
     altura = int(input("Ingrese la altura de su rectangulo: "))
     if altura < 1 or base < 1:
@@ -70,12 +70,15 @@ if operacion == 3:
 if operacion == 4:
     radio = int(input("Ingrese el radio de su circulo: "))
     print("El perímetro de su círculo es: ",perimetro_circulo(radio))
+
 if operacion == 5:
     radio=int(input("Ingrese el radio de su circulo: "))
     print("El área de su círculo es: ",area_circulo(radio))
+
 if operacion == 6:
     radio = int(input("Ingrese el radio de su esfera: "))
     print("El perímetro de su círculo es: ",volumen_esfera(radio))
+    
 if operacion == 7:
     cateto1 = int(input("Ingrese la medida del cateto 1: "))
     cateto2 = int(input("Ingrese la medida del cateto 2: "))
