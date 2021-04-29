@@ -1,14 +1,25 @@
 def minimoEjercBien(cantEjer,porcentaje):
-    """Devuelve la cantidad de Ejercicios que tienen que estar bien"""
+    """Recibe:
+            cantEjer: <int>
+            porcentaje: <int>
+       devuelve la cantidad minima de ejercicios
+       que se deben hacer bien para aprobar en
+       formato integer."""
     minimoEjercBien = (porcentaje * cantEjer) /100
     return int(minimoEjercBien)
 
 def notaFinal(ejerciciosBien,cantEjer):
-    """Devuelve la nota final en porcentaje"""
+    """Recibe:
+            ejerciciosBien: <int>
+            cantEjer: <int>
+       convierte la nota final en
+       un porcentaje y la devuelve como
+       integer."""
     notaFinal = (ejerciciosBien * 100) /cantEjer
     return int(notaFinal)
 
 cantEjer = 0
+
 while cantEjer < 1 or cantEjer == 0:
     cantEjer = int(input("Ingrese la cantidad de ejercicios del examen: "))
 

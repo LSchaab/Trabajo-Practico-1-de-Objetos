@@ -1,7 +1,10 @@
 vocales = ["a","e","i","o","u"]
+vocalesMayus = ["A", "E", "I", "O", "U"]
 
 def sacarVocales(cadena):
-    """Saca las vocales"""
+    """Recibe una cadena de caracteres,
+       la recorre y quita todas las vocales."""
+
     resultado = ""
     for i in cadena:
         if not i in vocales:
@@ -10,7 +13,9 @@ def sacarVocales(cadena):
 
 
 def sacarConsonantes(cadena):
-    """Saca las consonantes"""
+    """Recibe una cadena de caracteres,
+    la recorre y quita todas las consonantes."""
+    
     resultado = ""
     for i in cadena:
         if i in vocales:
@@ -19,20 +24,24 @@ def sacarConsonantes(cadena):
 
 
 def siguienteVocal(cadena):
-    """Reemplaza las vocales de una cadena por la vocal que le sigue"""
+    """Recibe una cadena de caracteres,
+       la recorre y reemplaza cada vocal
+       por la vocal que le sigue."""
+       
     for letra in cadena:
         if letra in vocales:
-            for i in range(0,4):
+            for i in range(0,5):
                 if letra == vocales[i]:
                     cadena = cadena.replace(letra, vocales[i+1])
-    for letra in cadena:
-        if letra == "u":
-            cadena = cadena.replace("u", "a")
 
     return cadena
 
 def esCapicua(cadena):
-    """Comprueba si la palabra ess capicua"""
+    """Recibe una cadena de caracteres,
+       la invierte y devuelve un valor
+       booleano dependiendo de si es o 
+       no capicua."""
+       
     if cadena == cadena[::-1]:
         return True
     else:

@@ -1,38 +1,69 @@
 
 def perimetro_rectangulo(b,h):
-    """Calcula el perímetro de un rectangulo"""
+    """Recibe:
+            b: <int>
+            h: <int>
+       Devuelve el perímetro """
+    
     perimetro = (b * 2) + (h * 2)
     return perimetro
 
+
 def area_rectangulo(b,h):
-    """Calcula el area de un rectangulo"""
+    """Recibe:
+            b: <int>
+            h: <int>
+       Devuelve el área. """
+    
     area = b * h
     return area
 
-def areacoordenadas(y2,y1,x2,x1):
-    """ Calcula el area de un rectangulo en base a las coordenadas en los ejes x e y"""
+
+def areaCoordenadas(y2,y1,x2,x1):
+    """Recibe:
+            y2: <int>
+            y1: <int>
+            x2: <int>
+            x1: <int>
+       Devuelve el área. """
+    
     area = (y2-y1) * (x2-x1)
     return area
 
+
 def perimetro_circulo(r):
-    """Calcula el perimetro de un circulo"""
+    """Recibe:
+            r: <int>
+       Devuelve el perímetro."""
+    
     perimetro = 2 * 3.14 * r
     return perimetro
 
 
 def area_circulo(r):
-    """Calcula el area de un circulo"""
+    """Recibe:
+            r: <int>
+       Devuelve el área."""
+    
     area2 = 3.14 * (r**2)
     return area2
 
+
 def volumen_esfera(r):
-    """Calcula el volumen de una esfera"""
+    """Recibe:
+            r: <int>
+       Devuelve el volúmen."""
+    
     volumen = 4/3 * 3.14 * (r**3)
     return volumen
 
 
 def hipotenusa(cat1,cat2):
-    """Calcula la hipotenusa de un triangulo"""
+    """Recibe:
+            cat1: <int>
+            cat2: <int>
+       Devuelve la hipotenusa."""
+    
     hipotenusa = (cat1**2 + cat2**2)**1/2
     return hipotenusa
 
@@ -53,31 +84,31 @@ if operacion == 1:
     if altura < 1 or base < 1:
         print("No ingrese numeros negativos.")
     else:
-        print("El perimetro es: ",perimetro_rectangulo(base,altura))
+        print("El perimetro es: ", perimetro_rectangulo(base,altura))
 
 if operacion == 2:
     base = int(input("Ingrese la base de su rectangulo: "))
     altura = int(input("Ingrese la altura de su rectangulo: "))
-    print("El area de su rectangulo es:",area_rectangulo(base,altura))
+    print("El area de su rectangulo es:", area_rectangulo(base,altura))
 
 if operacion == 3:
     y2 = int(input("Ingrese la coordenada y2: "))
     y1 = int(input("Ingrese la coordenada y1: "))
     x2 = int(input("Ingrese la coordenada x2: "))
     x1 = int(input("Ingrese la coordenada x1: "))
-    print("El área de su rectangulo es: ", areacoordenadas(y2,y1,x2,x1))
+    print("El área de su rectangulo es: ", areaCoordenadas(y2,y1,x2,x1))
 
 if operacion == 4:
     radio = int(input("Ingrese el radio de su circulo: "))
-    print("El perímetro de su círculo es: ",perimetro_circulo(radio))
+    print("El perímetro de su círculo es: ", perimetro_circulo(radio))
 
 if operacion == 5:
     radio=int(input("Ingrese el radio de su circulo: "))
-    print("El área de su círculo es: ",area_circulo(radio))
+    print("El área de su círculo es: ", area_circulo(radio))
 
 if operacion == 6:
     radio = int(input("Ingrese el radio de su esfera: "))
-    print("El perímetro de su círculo es: ",volumen_esfera(radio))
+    print("El perímetro de su círculo es: ", volumen_esfera(radio))
     
 if operacion == 7:
     cateto1 = int(input("Ingrese la medida del cateto 1: "))

@@ -1,9 +1,19 @@
 import random 
 
+
 def validarNum(numero, funcion):
-    """"Funcion = 1, valida los numeros que ingresa el usuario
-    Funcion = 2, valida los numeros que se generan de manera random
+    """"Recibe:
+            numero: <str>
+            funcion: <int>
+       funcion = 1 agrega el numero que ingreso
+       el usuario a una lista digito por digito.
+       funcion = 2 agrega el numero que se generó
+       aleatoriamente a una lista.
+       En ambos casos se comprueba que un digito no
+       esté en un numero más de una vez devolviendo un valor 
+       booleano.
     """
+    
     hacer = funcion
     numerosGenerados = []
     numerosDados = []
@@ -40,42 +50,47 @@ def validarNum(numero, funcion):
             return False
         
     
-
 def pedirNum():
-    """Pide un numero de 4 cifras distintas"""
+    """Pide un numero de 4 cifras distintas,
+       lo valida y lo devuelve."""
+
     numeroPedido = ""
     while validarNum(numeroPedido, 1) == False:
         numeroPedido = str(input("Ingrese un numero de 4 cifras distintas: "))
     return numeroPedido
     
     
-    
 def generarNum():
-    """Genera un numero aleatorio de 4 cifras"""
+    """Genera un numero aleatorio de 4 cifras,
+       lo valida y lo devuelve."""
     numeroGenerado = ""
     while validarNum(numeroGenerado, 2) == False:
             numeroGenerado = str(random.randint(1000 , 9999))
     return numeroGenerado
 
 
-
 def juego():
     """Guarda los numeros en dos listas y llama a las
-    funciones para verificar si son validos y compararlos"""
+    funciones para verificar si son validos y compararlos.
+    Puede devolver la cantidad de aciertos o coincdencias
+    o un mensaje que indica que el usuario ganó."""
+    
     numerosGenerados = []
     numeroGenerado = generarNum()
     aciertos = 0
+    
     for i in range(4):
         numerosGenerados.append(numeroGenerado[i])
-    print(numerosGenerados)
+    
     while aciertos != 4:
         numerosDados = []
         numeroPedido = pedirNum()
         for i in range(4):
             numerosDados.append(numeroPedido[i])
-        print(numerosDados)
+        
         aciertos = cantAciertos(numerosGenerados,numerosDados)
         coincidencias = cantCoincidencias(numerosDados,numerosGenerados)
+        
         if aciertos == 4:
             return f"Ganaste este bello juego tan sereno que me llevo toda una mañana de mi vida."
         else:
@@ -84,8 +99,15 @@ def juego():
 
     
 def cantAciertos(numerosGenerados,numerosDados):
-    """Cuenta los aciertos"""
+    """Recibe la lista de numeros generados 
+       aleatoriamente y la lista de numeros
+       que dio el usuario, las compara y
+       por cada numero que se encuentre en
+       la misma posisición que en el 
+       número generado se suma un acierto."""
+       
     aciertos = 0
+    
     for i in range(len(numerosGenerados)):
         if numerosGenerados[i] == numerosDados[i]:
             aciertos += 1
@@ -93,22 +115,32 @@ def cantAciertos(numerosGenerados,numerosDados):
     
 
 def preguntarSiEsNumero(numero):
-    """Pregunta si es un numero"""
+    """Recibe:
+            numero: <str>
+       comprueba si es un numero
+       devuelve un valor booleano."""
+       
     if numero.isdigit():
         return True
     else:
         return False
     
+    
 def cantCoincidencias(numerosGenerados,numerosDados):
-    """Cuenta las coincidencias"""
+    """Recibe la lista de numeros generados 
+       aleatoriamente y la lista de numeros
+       que dio el usuario, las suma y
+       por cada numero que se encuentre dos veces
+       en la lista se suma una coincidencia."""
+       
     coincidencias = 0
     todosNumeros = numerosGenerados + numerosDados
+
     for i in range(0,3):
         x = todosNumeros.count(todosNumeros[i])
         if x > 1:
             coincidencias += 1
     return coincidencias - cantAciertos(numerosGenerados,numerosDados)
         
-    
 
 print(juego())

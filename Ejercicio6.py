@@ -20,7 +20,8 @@ multis.append(mult5)
 multis.append(mult6)
 
 def compararMultis(multis):
-  """Compara las multiplicaciones"""
+  """Recibe una lista, la recorre y devuelve el valor mayor"""
+  
   mayor = multis[0]
   
   for i in range(len(multis)):

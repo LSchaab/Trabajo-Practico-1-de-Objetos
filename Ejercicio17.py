@@ -1,6 +1,16 @@
 def procesamientoTelegramas(texto, longMax, costoLargas, costoCortas ):
-    """Procesa un telegrama, si una palabra excede el límite la corta y pone un @
-        y reemplaza los puntos (.) por STOP y el punto final por STOPSTOP"""
+    """Recibe:
+            texto: <str>
+            longMax: <int>
+            costoLargas: <float>
+            costoCortas: <float>
+       guarda las palabras del texto en una lista, recorre la lista
+       y si la palabra supera la longitud maxima definida por el usuario
+       (longMax) se reemplaza el sobrante de la palabra por un @,
+       los puntos se reemplazan por un stop y el punto final por un STOPSTOP.
+       Se devuelve el costo total del telegrama y este mismo con
+       los cambios especificados anteriormente."""
+       
     listaPalabras = texto.split(" ")
     listaPalabras[-1] = listaPalabras[-1].rstrip(".")
     telegrama = ""
@@ -23,6 +33,7 @@ def procesamientoTelegramas(texto, longMax, costoLargas, costoCortas ):
     
     telegrama = telegrama.rstrip( ) + " " + "STOPSTOP"
     total = (costoCortas * contCortas) + (costoLargas * contLargas)
+    
     return telegrama, total
 
 texto = input("Ingrese su telegrama: ")

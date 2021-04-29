@@ -1,6 +1,12 @@
 CONTRASEÑA = "odiamospython"
 
 def comprobarContraseña(cont):
+    """Recibe:
+            cont: <str>
+       compara la contraseña que ingresa
+       el usuario con la contraseña determinada
+       y devuelve un valor booleano."""
+       
     if cont == CONTRASEÑA:
         return True
     else:

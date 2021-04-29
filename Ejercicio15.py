@@ -1,5 +1,7 @@
 def mostrarSiglas(cadena):
-    """Muestra solo la primera letra de cada palabra"""
+    """Recibe una cadena de caracteres y
+       devuelve solo la primera letra de cada palabra"""
+       
     siglas = ""
     lista = cadena.split()
     for letra in lista:
@@ -8,7 +10,10 @@ def mostrarSiglas(cadena):
 
 
 def convertirLetras(cadena):
-    """Convierte la primera letra de cada palabra en mayuscula"""
+    """Recibe una cadena de caracteres y
+       Convierte la primera letra de cada
+       palabra en mayuscula"""
+       
     lista = cadena.split()
     oracion = ""
     for i in lista:
@@ -16,8 +21,11 @@ def convertirLetras(cadena):
     return oracion
 
 
-def mostrarPlabrascon(cadena,letra):
-    """Muestra solo las palabras que inciian con la letra que se ingresa"""
+def mostrarPlabrasCon(cadena,letra):
+    """Recibe una cadena de caracteres y una letra
+    y muestra solo las palabras que empiecen con la
+    letra ingresada."""
+    
     lista = cadena.split()
     palabras = ""
     for palabra in lista:
@@ -44,4 +52,4 @@ if opcion == 3:
     letra = ""
     while letra == "" or letra.isdigit():
         letra = input("Ingrese la letra: ")
-    print(mostrarPlabrascon(cadena,letra))
+    print(mostrarPlabrasCon(cadena,letra))

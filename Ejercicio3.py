@@ -1,5 +1,7 @@
 def factorial(numero):
-    """Calcula el factorial de un numero"""
+    """Recibe: 
+        numero: <int>
+       Devuelve el factorial del numero."""
     fact = numero
     
     for i in range(1,numero):
