@@ -4,7 +4,7 @@ def farenheitACelscius(farenheit):
        Devuelve los grados convertidos a celscius """
        
     celscius = (farenheit - 32) * 5/9
-    return celscius
+    return round(celscius,2)
 
 def celsciusAFarenheit(celscius):
     """Recibe:
@@ -12,7 +12,7 @@ def celsciusAFarenheit(celscius):
        Devuelve los grados convertidos a farenheit """
        
     farenheit = (9/5 * celscius) + 32
-    return farenheit 
+    return round(farenheit,2) 
 
 def tablaFarenaCel():
     """Imprime una tabla de conversion

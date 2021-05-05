@@ -1,3 +1,6 @@
+import time
+from time import sleep
+
 CONTRASEÑA = "odiamospython"
 
 def comprobarContraseña(cont):
@@ -12,8 +15,7 @@ def comprobarContraseña(cont):
     else:
         return False
 
-import time
-from time import sleep
+
 intentos = 0
 cont = ""
 

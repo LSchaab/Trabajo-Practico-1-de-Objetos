@@ -5,19 +5,20 @@ n2 = int(input("Ingrese un numero: "))
 n3 = int(input("Ingrese un numero: "))
 n4 = int(input("Ingrese un numero: "))
 
-mult1 = n1 * n2
-mult2 = n1 * n3
-mult3 = n1 * n4
-mult4 = n2 * n3
-mult5 = n2 * n4
-mult6 = n3 * n4
-
-multis.append(mult1)
-multis.append(mult2)
-multis.append(mult3)
-multis.append(mult4)
-multis.append(mult5)
-multis.append(mult6)
+while multis.index != 6:
+  mult1 = n1 * n2
+  multis.append(mult1)
+  mult2 = n1 * n3
+  multis.append(mult2)
+  mult3 = n1 * n4
+  multis.append(mult3)
+  mult4 = n2 * n3
+  multis.append(mult4)
+  mult5 = n2 * n4
+  multis.append(mult5)
+  mult6 = n3 * n4
+  multis.append(mult6)
+  break
 
 def compararMultis(multis):
   """Recibe una lista, la recorre y devuelve el valor mayor"""

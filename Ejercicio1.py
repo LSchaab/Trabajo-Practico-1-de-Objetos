@@ -2,8 +2,16 @@ nombre = input("Ingrese su nombre: ")
 
 print("Hola,", nombre)
 
-num1 = float(input("Ingrese un numero: "))
-num2 = float(input("Ingrese otro numero: "))
-producto = num1 * num2
+numerosValidos = False
 
-print("El producto de", num1,"multiplicado por", num2, "es", producto)
+while numerosValidos == False:
+    try:
+        num1 = float(input("Ingrese un numero: "))
+        num2 = float(input("Ingrese otro numero: "))
+        numerosValidos = True
+        producto = num1 * num2
+    except ValueError:
+        print("Numero no valido.")
+
+
+print("El producto de", num1,"multiplicado por", num2, "es", round(producto,2))

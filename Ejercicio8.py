@@ -1,6 +1,6 @@
 ValorLetras = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
 
-def ConvertRoman(num):
+def convertRoman(num):
     """Recibe:
             num: <int>
        recorre la lista con tuplas y mientras
@@ -20,6 +20,17 @@ def ConvertRoman(num):
 
     return roman
 
-num = int(input("Ingrese un numero: "))
+añoValido = False
 
-print("Su numero en numeros romanos es: ", ConvertRoman(num))
+while añoValido == False:
+    try:
+        num = int(input("Ingrese un numero: "))
+        if num < 0:
+            print("Año no valido.")
+        else:
+            añoValido = True
+            break
+    except ValueError:
+        print("Año no valido.")
+
+print("Su numero en numeros romanos es: ", convertRoman(num))
